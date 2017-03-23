@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		1ABAC6AF1E82ADAD000CB24E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABAC6AE1E82ADAD000CB24E /* AppDelegate.swift */; };
 		1ABAC6B11E82ADAD000CB24E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABAC6B01E82ADAD000CB24E /* ViewController.swift */; };
-		1ABAC6B41E82ADAD000CB24E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAC6B21E82ADAD000CB24E /* Main.storyboard */; };
 		1ABAC6B61E82ADAD000CB24E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAC6B51E82ADAD000CB24E /* Assets.xcassets */; };
 		1ABAC6B91E82ADAD000CB24E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ABAC6B71E82ADAD000CB24E /* LaunchScreen.storyboard */; };
 		1ABAC6C41E82ADAD000CB24E /* FloatViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABAC6C31E82ADAD000CB24E /* FloatViewDemoTests.swift */; };
+		1AD193A41E841D29007AF633 /* FloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD193A31E841D29007AF633 /* FloatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +29,13 @@
 		1ABAC6AB1E82ADAD000CB24E /* FloatViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABAC6AE1E82ADAD000CB24E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ABAC6B01E82ADAD000CB24E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1ABAC6B31E82ADAD000CB24E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1ABAC6B51E82ADAD000CB24E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1ABAC6B81E82ADAD000CB24E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1ABAC6BA1E82ADAD000CB24E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ABAC6BF1E82ADAD000CB24E /* FloatViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloatViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ABAC6C31E82ADAD000CB24E /* FloatViewDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatViewDemoTests.swift; sourceTree = "<group>"; };
 		1ABAC6C51E82ADAD000CB24E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AD193A31E841D29007AF633 /* FloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatView.swift; path = FloatViewDemo/FloatView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				1ABAC6AE1E82ADAD000CB24E /* AppDelegate.swift */,
+				1AD193A51E841D68007AF633 /* FloatView */,
 				1ABAC6B01E82ADAD000CB24E /* ViewController.swift */,
-				1ABAC6B21E82ADAD000CB24E /* Main.storyboard */,
 				1ABAC6B51E82ADAD000CB24E /* Assets.xcassets */,
 				1ABAC6B71E82ADAD000CB24E /* LaunchScreen.storyboard */,
 				1ABAC6BA1E82ADAD000CB24E /* Info.plist */,
@@ -94,6 +94,14 @@
 				1ABAC6C51E82ADAD000CB24E /* Info.plist */,
 			);
 			path = FloatViewDemoTests;
+			sourceTree = "<group>";
+		};
+		1AD193A51E841D68007AF633 /* FloatView */ = {
+			isa = PBXGroup;
+			children = (
+				1AD193A31E841D29007AF633 /* FloatView.swift */,
+			);
+			path = FloatView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,7 +191,6 @@
 			files = (
 				1ABAC6B91E82ADAD000CB24E /* LaunchScreen.storyboard in Resources */,
 				1ABAC6B61E82ADAD000CB24E /* Assets.xcassets in Resources */,
-				1ABAC6B41E82ADAD000CB24E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ABAC6B11E82ADAD000CB24E /* ViewController.swift in Sources */,
+				1AD193A41E841D29007AF633 /* FloatView.swift in Sources */,
 				1ABAC6AF1E82ADAD000CB24E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,14 +233,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1ABAC6B21E82ADAD000CB24E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1ABAC6B31E82ADAD000CB24E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1ABAC6B71E82ADAD000CB24E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -412,6 +412,7 @@
 				1ABAC6CA1E82ADAD000CB24E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1ABAC6CB1E82ADAD000CB24E /* Build configuration list for PBXNativeTarget "FloatViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				1ABAC6CD1E82ADAD000CB24E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
