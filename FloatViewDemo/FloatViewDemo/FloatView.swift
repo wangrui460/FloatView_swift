@@ -49,3 +49,20 @@ class FloatView: UIImageView
         self.frame = frame
     }
 }
+
+
+// MARK: - getter / setter
+extension FloatView
+{
+    
+    /// 重写image的set方法
+    override var image: UIImage? {
+        didSet {
+            self.sizeToFit()
+            moveToInitialLocation()
+        }
+    }
+}
+
+
+
