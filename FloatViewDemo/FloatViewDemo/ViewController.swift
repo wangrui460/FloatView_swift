@@ -14,6 +14,8 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        let floatView = FloatView(image: UIImage(named: "FloatBonus"))
+        view.addSubview(floatView)
     }
 }
 
