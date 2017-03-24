@@ -65,4 +65,34 @@ extension FloatView
 }
 
 
+// MARK: - touchesMoved、touchesEnded
+extension FloatView
+{
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        super.touchesMoved(touches, with: event)
+        for touch:AnyObject in touches
+        {
+            if (touch.isKind(of: UITouch.self))
+            {
+                let curPoint = touch.location(in: self)
+                let prePoint = touch.previousLocation(in: self)
+                let moveX = curPoint.x - prePoint.x
+                let moveY = curPoint.y - prePoint.y
+                var frame = self.frame
+                frame.origin.x += moveX
+                frame.origin.y += moveY
+                self.frame = frame
+                return
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        super.touchesEnded(touches, with: event)
+    }
+}
+
+
 
