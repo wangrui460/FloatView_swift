@@ -31,6 +31,7 @@ class FloatView: UIImageView
     var stayMode:StayMode = .STAYMODE_LEFTANDRIGHT
     var stayEdgeDistance:CGFloat = 5
     fileprivate let stayAnimateTime = 0.3
+    fileprivate var isHalfInScreen = false
     
     override init(image: UIImage?)
     {
@@ -74,6 +75,7 @@ extension FloatView
         frame.origin.x = initX
         frame.origin.y = initY
         self.frame = frame
+        isHalfInScreen = false
     }
     
     /// 当滚动的时候悬浮图片居中在屏幕边缘
@@ -98,6 +100,7 @@ extension FloatView
         UIView.animate(withDuration: TimeInterval(0.2), animations: { [weak self] in
             self?.frame = frame
         })
+        isHalfInScreen = true
     }
     
     /// 根据stayMode来移动浮动图片
@@ -132,6 +135,7 @@ extension FloatView
         UIView.animate(withDuration: TimeInterval(0.5)) { [weak self] in
             self?.frame = frame
         }
+        isHalfInScreen = false
     }
     
     func judgeLocationIsLeft() -> Bool
@@ -190,7 +194,11 @@ extension FloatView
         {
             if let tapBlock = objc_getAssociatedObject(self, kTapGentureActionKey) as? (()->())
             {
-                tapBlock()
+                if (isHalfInScreen == true) {
+                    moveFloatView()
+                } else {
+                    tapBlock()
+                }
             }
         }
     }
