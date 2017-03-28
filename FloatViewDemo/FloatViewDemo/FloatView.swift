@@ -76,6 +76,30 @@ extension FloatView
         self.frame = frame
     }
     
+    /// 当滚动的时候悬浮图片居中在屏幕边缘
+    func moveTohalfInScreen()
+    {
+        let isLeft = judgeLocationIsLeft()
+        moveStayToMiddleInScreenBorder(isLeft: isLeft)
+    }
+    
+    func moveStayToMiddleInScreenBorder(isLeft:Bool)
+    {
+        var frame = self.frame;
+        let stayWidth = frame.size.width;
+        var destinationX:CGFloat;
+        if (isLeft == true) {
+            destinationX = -stayWidth/2;
+        }
+        else {
+            destinationX = kScreenWidth - stayWidth + stayWidth/2;
+        }
+        frame.origin.x = destinationX;
+        UIView.animate(withDuration: TimeInterval(0.2), animations: { [weak self] in
+            self?.frame = frame
+        })
+    }
+    
     /// 根据stayMode来移动浮动图片
     func moveFloatView()
     {

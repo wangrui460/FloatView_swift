@@ -38,7 +38,7 @@ extension ViewController: UITableViewDelegate
 {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
-        
+        floatView?.moveTohalfInScreen()
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
