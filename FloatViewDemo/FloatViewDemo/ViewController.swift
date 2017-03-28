@@ -10,10 +10,13 @@ import UIKit
 
 class ViewController: UIViewController
 {
+    private lazy var tableView:UITableView = UITableView(frame: self.view.bounds, style: .plain)
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        view.addSubview(tableView)
         // 创建方式一：
 //        let floatView = FloatView(image: UIImage(named: "FloatBonus"))
         
