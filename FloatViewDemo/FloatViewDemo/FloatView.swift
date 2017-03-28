@@ -8,6 +8,9 @@
 
 import UIKit
 
+fileprivate let kTapGentureKey       = UnsafeRawPointer(bitPattern: "kTapGentureKey".hashValue)
+fileprivate let kTapGentureActionKey = UnsafeRawPointer(bitPattern: "kTapGentureActionKey".hashValue)
+
 /// 类似OC的宏定义#define,前面加上fileprivate表示只在本文件中有效
 fileprivate let NavBarBottom:CGFloat  = 64.0
 fileprivate let TabBarHeight:CGFloat  = 49.0
@@ -51,10 +54,36 @@ class FloatView: UIImageView
 }
 
 
+// MARK: - 轻点事件
+extension FloatView
+{
+    func setTapActionWithBlock(tapBlock:(()->()))
+    {
+        let tapGesture = objc_getAssociatedObject(self, kTapGentureKey)
+        if (tapGesture == nil)
+        {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onClickFloatView))
+            self.addGestureRecognizer(tapGesture)
+            objc_setAssociatedObject(self, kTapGentureKey, tapGesture, .OBJC_ASSOCIATION_RETAIN)
+        }
+        objc_setAssociatedObject(self, kTapGentureActionKey, (tapBlock as AnyObject) , .OBJC_ASSOCIATION_COPY)
+    }
+    
+    func onClickFloatView(tapGesture:UITapGestureRecognizer)
+    {
+        if (tapGesture.state == UIGestureRecognizerState.recognized)
+        {
+            if let tapBlock = objc_getAssociatedObject(self, kTapGentureActionKey) as? (()->())
+            {
+                tapBlock()
+            }
+        }
+    }
+}
+
 // MARK: - getter / setter
 extension FloatView
 {
-    
     /// 重写image的set方法
     override var image: UIImage? {
         didSet {
