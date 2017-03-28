@@ -49,7 +49,12 @@ class FloatView: UIImageView
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+
+// MARK: - 移动相关方法
+extension FloatView
+{
     /// 设置浮动图片的初始位置
     func moveToInitialLocation()
     {
@@ -61,8 +66,75 @@ class FloatView: UIImageView
         frame.origin.y = initY
         self.frame = frame
     }
+    
+    /// 根据stayMode来移动浮动图片
+    func moveFloatView()
+    {
+        switch stayMode
+        {
+        case .STAYMODE_LEFTANDRIGHT:
+            let isLeft = judgeLocationIsLeft()
+            moveToBorder(isLeft: isLeft)
+        case .STAYMODE_LEFT:
+            moveToBorder(isLeft: true)
+        case .STAYMODE_RIGHT:
+            moveToBorder(isLeft: false)
+        }
+    }
+    
+    /// 移动到屏幕边缘
+    func moveToBorder(isLeft:Bool)
+    {
+        var frame = self.frame
+        let stayWidth = frame.width
+        var borderX:CGFloat = 0
+        if (isLeft == true) {
+            borderX = stayEdgeDistance
+        } else {
+            borderX = kScreenWidth - stayEdgeDistance - stayWidth
+        }
+        let curY = moveSafeLocationY()
+        frame.origin.x = borderX
+        frame.origin.y = curY
+        UIView.animate(withDuration: TimeInterval(0.5)) { [weak self] in
+            self?.frame = frame
+        }
+    }
+    
+    func judgeLocationIsLeft() -> Bool
+    {
+        // 手机屏幕中间位置x值
+        let middleX = UIScreen.main.bounds.size.width / 2.0
+        // 当前view的x值
+        let curX = self.frame.origin.x + self.bounds.width/2
+        if (curX <= middleX) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    /// 保证垂直方向不在导航栏以上或者tabBar以下
+    func moveSafeLocationY() -> CGFloat
+    {
+        let frame = self.frame
+        let stayHeight = frame.size.height
+        // 当前view的y值
+        let curY = frame.origin.y
+        var destinationY = curY
+        // 悬浮图片的最顶端Y值
+        let stayMostTopY = NavBarBottom + stayEdgeDistance
+        if (curY <= stayMostTopY) {
+            destinationY = stayMostTopY
+        }
+        // 悬浮图片的底端Y值
+        let stayMostBottomY = kScreenHeight - TabBarHeight - stayEdgeDistance - stayHeight
+        if (curY >= stayMostBottomY) {
+            destinationY = stayMostBottomY
+        }
+        return destinationY
+    }
 }
-
 
 // MARK: - 轻点事件
 extension FloatView
@@ -130,6 +202,7 @@ extension FloatView
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         super.touchesEnded(touches, with: event)
+        moveFloatView()
     }
 }
 
