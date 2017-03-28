@@ -17,8 +17,18 @@ fileprivate let TabBarHeight:CGFloat  = 49.0
 fileprivate let kScreenWidth  = UIScreen.main.bounds.width
 fileprivate let kScreenHeight = UIScreen.main.bounds.height
 
+enum StayMode {
+    // 停靠左右两侧
+    case STAYMODE_LEFTANDRIGHT
+    // 停靠左侧
+    case STAYMODE_LEFT
+    // 停靠右侧
+    case STAYMODE_RIGHT
+}
+
 class FloatView: UIImageView
 {
+    var stayMode:StayMode = .STAYMODE_LEFTANDRIGHT
     var stayEdgeDistance:CGFloat = 5
     fileprivate let stayAnimateTime = 0.3
     

@@ -20,6 +20,7 @@ class ViewController: UIViewController
         // 创建方式二：
         let floatView = FloatView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         floatView.image = UIImage(named: "FloatBonus")
+        floatView.stayMode = .STAYMODE_LEFTANDRIGHT
         floatView.setTapActionWithBlock {
             print("点击了浮动图片。。。")
         }
