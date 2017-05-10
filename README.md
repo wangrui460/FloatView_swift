@@ -20,3 +20,6 @@ override func viewDidLoad()
     view.addSubview(floatView)
 }
 </code></pre>
+
+
+你觉得对你有所帮助的话，请献上宝贵的Star！！！ 不胜感激！！！
